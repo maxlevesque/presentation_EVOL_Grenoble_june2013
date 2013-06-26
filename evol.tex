@@ -8,6 +8,7 @@
 \usepackage{movie15}
 \usepackage{color}
 \usepackage{fancybox}
+\DeclareRobustCommand{\orderof}{\ensuremath{\mathcal{O}}}
 
 \mode<presentation>
 {
@@ -272,8 +273,26 @@ $\rightarrow$ Understanding of molecular origin!
 %~ 
 %~ 
 %~ 
+\begin{frame}{Objective}
+    \begin{itemize}
+        \item Predict solubilities when experimentally difficult to measure
+        \item $\Rightarrow$ e.g. Pu in LiF-ThF$_4$ (what quantity of Pu can be dissolved).
+        \item Saddly, it is also difficult from a theoretical and numerical point of view.
+        \begin{itemize}
+            \item clear definition of the chemical potential(s)
+            \item and of the reference state?
+            \item Necessity for workarounds?
+            \item Specific needs $\Rightarrow$ specific codes! (on the basis of Paul's codes)
+        \end{itemize}
+    \end{itemize}
+    \scriptsize{Salanne, Simon, Turq \& Madden, JPCB 112, 1177 (2008)}
+\end{frame}
+%~ 
+%~ 
+%~ 
+%~ 
 \begin{frame}
-    \frametitle{Activity coefficients to predict solubilities}
+    \frametitle{We measure activity coefficients, not solubilities}{}
     \begin{itemize}
         \item Equilibrium:
             \begin{center}
@@ -320,8 +339,8 @@ $\rightarrow$ Understanding of molecular origin!
 \begin{frame}
     \frametitle{How we calculate activity coefficients, or $\Delta G_{\text{transmut},A\rightarrow B\text{ in S}}$}
     \begin{enumerate}
-        \item Slowly transmut YF$_3$ in LaF$_3$ in NaF-ZrF$_4$ at given c,T\\ during molecular dynamic simulation
-        \item Store average change in internal energy due to transmut
+        \item Slowly transmute YF$_3$ into LaF$_3$ in NaF-ZrF$_4$ at given c,T\\ during molecular dynamic simulation
+        \item Store average change in internal energy due to transmutation
         %~ figure des transmutation, explication dudl/dl, figure integration pour exemple
             \begin{figure}
                 \includegraphics[width=.6\textwidth]{dudl_of_l}
@@ -348,7 +367,7 @@ $\rightarrow$ Understanding of molecular origin!
         \begin{column}{7cm}
             $\Delta G_{\text{transmut YF}_3 \rightarrow\text{ LaF}_3} = 311.8$ kJ/mol
             \begin{figure}
-                \includegraphics[width=\textwidth]{LiFThF4piechart.png}
+                \includegraphics[width=\textwidth]{LiFTF4dGchart}
             \end{figure}
         \end{column}
     \end{columns}
@@ -428,7 +447,29 @@ $\rightarrow$ Understanding of molecular origin!
 %~ 
 %~ 
 %~ 
-
+\begin{frame}{Solubility of LaF$_3$ in NaF-ZrF$_4$ and NaF-BeF$_2$}
+    $ r = s_{\text{LaF}_3}^{\text{NaF-BeF}_2} / s_{\text{LaF}_3}^{\text{NaF-ZrF}_4}$
+    \begin{columns}
+        \begin{column}{6cm}
+            \begin{figure}
+                \includegraphics[width=\textwidth]{solRatioEvoWithT}
+                \caption{Experimental (Ward et al.): ~~~~~ (NaF)$_{61}$(BeF$_2$)$_{39}$ and (NaF)$_{52}$(ZrF$_4$)$_{48}$}
+            \end{figure}
+        \end{column}
+        \begin{column}{6cm}
+            \begin{figure}
+                \includegraphics[width=\textwidth]{deducted_solubilities}
+                \caption{Calculated: ~~~~~ (NaF)$_{61}$(BeF$_2$)$_{39}$ and 873 K}
+            \end{figure}
+        \end{column}
+    \end{columns}
+    Qualitative agreement $\rightarrow$ solubility of LaF$_3$ higher in NaF-ZrF$_4$
+    Semi-quantative agreement $r\approx 10^{-1}$
+\end{frame}
+%~ 
+%~ 
+%~ 
+%~ 
 \section{Conclusion \& Perspectives}
 
 \begin{frame}
