@@ -68,7 +68,7 @@ Predictions of physical properties of LiF-ThF$_4$ \\ from molecular dynamics sim
       \end{column}
       \begin{column}{6cm}
          \begin{figure}
-            \includemovie[poster,text={Loading movie}]{6cm}{6cm}{sio2na2o.mpg}
+            %~ \includemovie[poster,text={Loading movie}]{6cm}{6cm}{sio2na2o.mpg}
          \end{figure}
          \vspace{-0.5cm}
          \begin{center}
@@ -277,7 +277,7 @@ $\rightarrow$ Understanding of molecular origin!
     \begin{itemize}
         \item Predict solubilities when experimentally difficult to measure
         \item $\Rightarrow$ e.g. Pu in LiF-ThF$_4$ (what quantity of Pu can be dissolved).
-        \item Saddly, it is also difficult from a theoretical and numerical point of view.
+        \item Sadly, it is also difficult from a theoretical and numerical point of view.
         \begin{itemize}
             \item clear definition of the chemical potential(s)
             \item and of the reference state?
@@ -292,24 +292,36 @@ $\rightarrow$ Understanding of molecular origin!
 %~ 
 %~ 
 \begin{frame}
-    \frametitle{We measure activity coefficients, not solubilities}{}
+    \frametitle{We measure variations in free energies, i.e. activity coefficients, not the closely related solubilities}
+    \begin{columns}
+        \begin{column}{6cm}
+            Equilibrium (A e.g. PuF$_3$):
+            \begin{eqnarray}
+                \text{A(solid)} = \text{A(dissolved in S)}  \\
+                \text{A(solid)} = \text{A(dissolved in S}^\prime)
+            \end{eqnarray}
+        \end{column}
+        \begin{column}{6cm}
+            Gibbs free energy:
+            \begin{eqnarray}
+                \Delta_r G^S_A &=& \mu^* - \mu^0 + RT\ln(a_A^S) \nonumber \\
+                \Delta_r G^{S^{\prime}}_A &=& \mu^* - \mu^0 + RT\ln(a_{A}^{S^\prime}) \nonumber
+            \end{eqnarray}
+        \end{column}
+    \end{columns}
     \begin{itemize}
-        \item Equilibrium:
-            \begin{center}
-                A(dissolved in S) + B(solid) = A(solid) + B(dissolved in S)\\
-                A = e.g. YF$_3$, B = e.g. PuF$_3$
-            \end{center}
-        \item Associated reversible work (Gibbs free energy):
-            \begin{equation}
-                \beta \Delta G_\text{tot} = \ln\left(\frac{\gamma_B^S}{\gamma_A^S}\right) +\beta \Delta \mu ^0 \nonumber
-            \end{equation}
-            $\gamma_A^S$ and $\gamma_B^S$: activity coefficients of A and B in salt S.
-        \item Link with solubility:
-            \begin{equation}
-                \frac{\gamma_B^S}{\gamma_A^S} \approx \frac{s_A^S}{s_B^S}   \nonumber
-            \end{equation}
-        \item $\Delta\mu^0$ unknown $\rightarrow$ use two salts
+        \item $\mu^*$ reference chemical potential of pure element A
+        \item $\mu^0$ chemical potential of solid A
+        \item R ideal gas constant
+        \item T temperature
+        \item $a_A^S$ activity of species A in salt S
     \end{itemize}
+    \begin{equation}
+        \Delta_r G^{S^\prime}_A - \Delta_r G^S_A = RT\ln\left( \frac{a_{A}^{S^\prime}}{a_A^S}  \right),\nonumber
+    \end{equation}
+    \begin{equation}
+        \text{with }\frac{a_{A}^{S^\prime}}{a_A^S} \propto \frac{s_A^S}{s_{A}^{S^\prime}} \nonumber
+    \end{equation}
     \scriptsize{Salanne, Simon, Turq \& Madden, J. Phys. Chem. B \textbf{112}, 1177 (2008)}
 \end{frame}
 %~ 
@@ -317,20 +329,19 @@ $\rightarrow$ Understanding of molecular origin!
 %~ 
 %~ 
 \begin{frame}
-    \frametitle{Activity coefficients to predict solubilities}
-    \begin{itemize}
-        \item Two equilibriums:\\
-            A(dissolved in S) + B(solid) = A(solid) + B(dissolved in S)\\
-            A(dissolved in S$^\prime$) + B(solid) = A(solid) + B(dissolved in S$^\prime$)
-        \item
-            \begin{eqnarray}
-                \Delta G_\text{tot} - \Delta G_\text{tot}^\prime &=& \beta^{-1}\ln\left(\frac{\gamma_B^S}{\gamma_A^S}\right) + \Delta \mu ^0  - \beta^{-1}\ln\left(\frac{\gamma_B^{S^\prime}}{\gamma_A^{S^\prime}}\right) - \Delta \mu ^0 \\ \nonumber
-                &=& \beta^{-1}\ln\left(\frac{\gamma_A^{S^{\prime}}\cdot\gamma_B^S}{\gamma_A^S\cdot\gamma_B^{S^\prime}}\right) \\ \nonumber
-                &=& \Delta G_{\text{transmut},A\rightarrow B\text{ in S}} - \Delta G_{\text{transmut},A\rightarrow B\text{ in S}^{\prime}} \\ \nonumber
-                &\approx & \beta^{-1}\ln\left(\frac{s_A^S\cdot s_B^{S^\prime}}{s_A^{S^{\prime}}\cdot s_B^S}\right)   \nonumber
-            \end{eqnarray}
-        \item From Ward et al., ORNL (1959) $\rightarrow$ solubility of YF3 and LaF3 in NaF-ZrF$_4$ and NaF-BeF$_2$
-    \end{itemize}
+    \frametitle{Workaround to complicated solid-liquid equilibriums}
+        Consider four equilibriums:
+        \begin{eqnarray}
+            \text{A(solid)} &=& \text{A(dissolved in S)} \nonumber \\
+            \text{A(solid)} &=& \text{A(dissolved in S}^\prime) \nonumber\\
+            \text{B(solid)}  &=& \text{B(dissolved in S)} \nonumber\\
+            \text{B(solid)} &=& \text{B(dissolved in S}^\prime)\nonumber
+        \end{eqnarray}
+    \begin{eqnarray}
+        &&\left(\Delta_r G^{S^\prime}_A - \Delta_r G^S_A  \right) - \left( \Delta_r G^{S^\prime}_B - \Delta_r G^S_B  \right) = RT\ln\left( \frac{a_{A}^{S^\prime}}{a_A^S} \cdot \frac{a_B^S}{a_{B}^{S^\prime}}  \right)\nonumber \\
+        &&= \Delta G_{\text{transmut A} \rightarrow\text{ B in S}} - \Delta G_{\text{transmut A} \rightarrow\text{ B in S}^\prime}, \nonumber
+    \end{eqnarray}
+    This we can calculate by thermodynamic integration
 \end{frame}
 %~ 
 %~ 
@@ -352,74 +363,63 @@ $\rightarrow$ Understanding of molecular origin!
 %~ 
 %~ 
 %~ 
-\begin{frame}
-    \frametitle{LiF-ThF$_4$}
-    %~ donner temp et concentration effect (on a ?) et expliquer le manque de reference
-    %~ donc on passe à des objets pour lesquels on a des références 
-    Work in progress. Only 600 $^{\circ}$C and 22 mole \% ThF$_4$ for now.
-    \vspace{0.5cm}
-    \begin{columns}
-        \begin{column}{5cm}
-            \begin{figure}
-                \includegraphics[width=\textwidth]{LiFThF4ddp.png}
-            \end{figure}
-        \end{column}
-        \begin{column}{7cm}
-            $\Delta G_{\text{transmut YF}_3 \rightarrow\text{ LaF}_3} = 311.8$ kJ/mol
-            \begin{figure}
-                \includegraphics[width=\textwidth]{LiFTF4dGchart}
-            \end{figure}
-        \end{column}
-    \end{columns}
+\begin{frame}{Methodological validation on reference salts}{NaF-ZrF$_4$ and NaF-BeF$_2$}
+    For NaF-ZrF$_4$ and NaF-BeF$_2$ salts, we have
     \begin{itemize}
-        \item $\Rightarrow$ Closer look to the "size effect".
+        \item experimental data (Ward et al., ORNL report (1959),
+        \item force field already validated
+        \item interesting solubility properties of LaF$_3$, CeF$_3$, YF$_3$
     \end{itemize}
 \end{frame}
-%~ 
-%~ 
-%~ 
-%~ 
-\begin{frame}
-    \frametitle{Ionic "sizes" as a critical parameter in LiF-ThF$_4$}
-    \begin{itemize}
-        \item Transmutation of YF$_3$ into LaF$_3$, the "size" of which is decreased from LaF$_3$ to YF$_3$. Polarization etc. unchanged.
-        \begin{figure}
-            \includegraphics[width=0.9\textwidth]{LiFThF4sizeEffectPiechart}
-        \end{figure}
-        \item The "size" of the cation drives the free energy of transmutation in LiF-ThF$_4$.
-    \end{itemize}
+
+\begin{frame}{Methodological validation}
+    Interesting solubility properties of LaF$_3$, CeF$_3$, YF$_3$ in NaF-ZrF$_4$ and NaF-BeF$_2$
+    \begin{figure}
+        \includegraphics[width=0.5\textwidth]{ward_et_al_solubilities}
+        \caption{Experimental solubilities. From Ward et al., ORNL (1959)}
+    \end{figure}
+    Solubility of YF$_3$, $s(\text{YF}_3)$, the same in both salts.
+\end{frame}
+
+\begin{frame}{Methodological validation}
+    Interesting solubility properties of LaF$_3$, CeF$_3$, YF$_3$ in NaF-ZrF$_4$ and NaF-BeF$_2$
+    \begin{figure}
+        \includegraphics[width=0.7\textwidth]{CeF3vsLaF3}
+        \caption{Experimental solubilities. From Ward et al., ORNL (1959)}
+    \end{figure}
+    Solubilities of CeF$_3$ and LaF$_3$ in both salts differ by no more than 10 \%.
 \end{frame}
 %~ 
+
 %~ 
 %~ 
 %~ 
-\begin{frame}{Ongoing work on solubilities}{Validation on reference salts NaF-ZrF$_4$ and NaF-BeF$_2$}
-    \scriptsize{Ward et al., ORNL report (1959)}
-    \begin{columns}
-        \begin{column}{6cm}
-            \begin{figure}
-                \includegraphics[width=\textwidth]{ward_et_al_solubilities}
-            \end{figure}
-        \end{column}
-        \begin{column}{6cm}
-            \begin{figure}
-                \includegraphics[width=\textwidth]{CeF3vsLaF3}
-            \end{figure}
-        \end{column}
-    \end{columns}
+%~ 
+%~ 
+%~ 
+%~ 
+%~ 
+%~ 
+\begin{frame}{Methodological validation on reference salts NaF-ZrF$_4$ and NaF-BeF$_2$}{Strategy}
     \begin{itemize}
         \item Solubility of YF$_3$, $s(\text{YF}_3)$, the same in both salts.
         \item Experimentaly, we have $s(\text{YF}_3)$ and $s(\text{LaF}_3)$ or $s(\text{CeF}_3)\approx s(\text{LaF}_3)$ in both salts.
         \item $s(\text{LaF}_3)$ in NaF-ZrF$_4$ $>$ $s(\text{LaF}_3)$ in NaF-BeF$_2$
     \end{itemize}
+    Remember,
+    \begin{eqnarray}
+        \Delta G_{\text{transmut A} \rightarrow\text{ B in S}} - \Delta G_{\text{transmut A} \rightarrow\text{ B in S}^\prime} &=& RT\ln\left( \frac{a_{A}^{S^\prime}}{a_A^S} \cdot \frac{a_B^S}{a_{B}^{S^\prime}}  \right)\nonumber \\
+        &\propto& RT\ln\left( \frac{s_{B}^{S^\prime}}{s_B^S} \cdot \frac{s_A^S}{s_{A}^{S^\prime}}  \right)\nonumber \\
+        &\propto& RT\ln\left( \frac{s_{B}^{S^\prime}}{s_B^S} \right) \nonumber
+    \end{eqnarray}
 \end{frame}
 %~ 
 %~ 
 %~ 
 %~ 
-\begin{frame}{Ongoing work on solubilities}{Validation on reference salts NaF-ZrF$_4$ and NaF-BeF$_2$}
+\begin{frame}{Validation on reference salts NaF-ZrF$_4$ and NaF-BeF$_2$}
     \begin{figure}
-        \includegraphics[width=0.6\textwidth]{dGtransZrBe}
+        \includegraphics[width=0.7\textwidth]{dGtransZrBe}
     \end{figure}
     \begin{itemize}
         %~ \item $\Delta G_{\text{transmut YF}_3 \rightarrow\text{ LaF}_3$
@@ -435,11 +435,11 @@ $\rightarrow$ Understanding of molecular origin!
 \begin{frame}{Ongoing work on solubilities}{Validation on reference salts NaF-ZrF$_4$ and NaF-BeF$_2$}
     Remember,
     \begin{equation}
-        \Delta G_{\text{transmut},A\rightarrow B\text{ in S}} - \Delta G_{\text{transmut},A\rightarrow B\text{ in S}^{\prime}} \approx \beta^{-1}\ln\left(\frac{s_A^S\cdot s_B^{S^\prime}}{s_A^{S^{\prime}}\cdot s_B^S}\right),   \nonumber
+        \Delta G_{\text{transmut},A\rightarrow B\text{ in S}} - \Delta G_{\text{transmut},A\rightarrow B\text{ in S}^{\prime}} = RT \ln\left(\frac{a_A^S\cdot a_B^{S^\prime}}{a_A^{S^{\prime}}\cdot a_B^S}\right),   \nonumber
     \end{equation}
     .and. $s(\text{YF}_3)$ the same in both salts $\Rightarrow $
     \begin{equation}
-        \Delta G_{\text{YF3}\rightarrow\text{LaF3 in NaFZrF4}} - \Delta G_{\text{YF3}\rightarrow\text{LaF3 in NaFBeF2}} \approx \beta^{-1}\ln\left(\frac{s_{\text{LaF}_3}^{\text{NaF-BeF}_2}}{s_{\text{LaF}_3}^{\text{NaF-ZrF}_4}}\right) \nonumber
+        \Delta G_{\text{YF3}\rightarrow\text{LaF3 in NaFZrF4}} - \Delta G_{\text{YF3}\rightarrow\text{LaF3 in NaFBeF2}} \propto RT \ln\left(\frac{s_{\text{LaF}_3}^{\text{NaF-BeF}_2}}{s_{\text{LaF}_3}^{\text{NaF-ZrF}_4}}\right) \nonumber
     \end{equation}
     $\Rightarrow$ Solubility ratio
 \end{frame}
@@ -448,23 +448,44 @@ $\rightarrow$ Understanding of molecular origin!
 %~ 
 %~ 
 \begin{frame}{Solubility of LaF$_3$ in NaF-ZrF$_4$ and NaF-BeF$_2$}
-    $ r = s_{\text{LaF}_3}^{\text{NaF-BeF}_2} / s_{\text{LaF}_3}^{\text{NaF-ZrF}_4}$
+    $ r = a_{\text{LaF}_3}^{\text{NaF-ZrF}_4} / a_{\text{LaF}_3}^{\text{NaF-BeF}_2} $
+    \begin{figure}
+        \includegraphics[width=0.6\textwidth]{deducted_solubilities}
+        \caption{Experimental point: (NaF)$_{61}$(BeF$_2$) and (NaF)$_{52}$(ZrF$_4$)}
+    \end{figure}
+    \begin{itemize}
+        \item Ward et al., ORNL (1959) give solubility ratio of (NaF)$_{61}$(BeF$_2$)$_{39}$ and (NaF)$_{52}$(ZrF$_4$)$_{48}$
+        \item We calculate for whole concentrations in NaFBeF$_2$ and NaF-ZrF$_4$ and various $T$
+    \end{itemize}
+    Qualitative agreement $\rightarrow$ solubility of LaF$_3$ higher in NaF-ZrF$_4$
+    Semi-quantative agreement $r\approx 10^{-1}$
+\end{frame}
+%~ 
+%~ 
+%~ 
+%~ 
+\begin{frame}
+    \frametitle{LiF-ThF$_4$}
+    Work in progress!\\
+    Only at 600 $^{\circ}$C and 22 mole \% ThF$_4$ for now.
+    \vspace{0.5cm}
     \begin{columns}
-        \begin{column}{6cm}
+        \begin{column}{5cm}
             \begin{figure}
-                \includegraphics[width=\textwidth]{solRatioEvoWithT}
-                \caption{Experimental (Ward et al.): ~~~~~ (NaF)$_{61}$(BeF$_2$)$_{39}$ and (NaF)$_{52}$(ZrF$_4$)$_{48}$}
+                \includegraphics[width=\textwidth]{LiFThF4ddp.png}
             \end{figure}
         \end{column}
-        \begin{column}{6cm}
+        \begin{column}{7cm}
+            $\Delta G_{\text{transmut YF}_3 \rightarrow\text{ LaF}_3} = 311.8$ kJ/mol
             \begin{figure}
-                \includegraphics[width=\textwidth]{deducted_solubilities}
-                \caption{Calculated: ~~~~~ (NaF)$_{61}$(BeF$_2$)$_{39}$ and 873 K}
+                \includegraphics[width=\textwidth]{LiFTF4dGchart}
             \end{figure}
         \end{column}
     \end{columns}
-    Qualitative agreement $\rightarrow$ solubility of LaF$_3$ higher in NaF-ZrF$_4$
-    Semi-quantative agreement $r\approx 10^{-1}$
+    \begin{itemize}
+        \item The repulsive forces accounts for $95 \%$ of $\Delta G_{\text{transmut YF}_3 \rightarrow\text{ LaF}_3}$
+        \item Major driving force $\rightarrow$ "size" of the cation (see SI).
+    \end{itemize}
 \end{frame}
 %~ 
 %~ 
@@ -482,8 +503,6 @@ $\rightarrow$ Understanding of molecular origin!
    \end{itemize}
 \end{frame}
 
-
-
 \begin{frame}{Supplementary material}{Effect of UF$_4$ on solubilities}
     Ward et al. answered in ORNL report (1959)
     \begin{figure}
@@ -494,7 +513,16 @@ $\rightarrow$ Understanding of molecular origin!
     \end{itemize}
 \end{frame}
 
-
+\begin{frame}
+    \frametitle{Ionic "sizes" as a critical parameter in LiF-ThF$_4$}
+    \begin{itemize}
+        \item Transmutation of YF$_3$ into LaF$_3$, the "size" of which is decreased from LaF$_3$ to YF$_3$. Polarization etc. unchanged.
+        \begin{figure}
+            \includegraphics[width=0.9\textwidth]{LiFThF4sizeEffectPiechart}
+        \end{figure}
+        \item The "size" of the cation drives the free energy of transmutation in LiF-ThF$_4$.
+    \end{itemize}
+\end{frame}
 
 \appendix
 \makeatletter
